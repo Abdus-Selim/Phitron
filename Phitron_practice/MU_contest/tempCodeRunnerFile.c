@@ -1,0 +1,1 @@
+  // fgets(n, sizeof(n), stdin);
