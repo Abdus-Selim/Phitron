@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 class node
@@ -9,21 +8,16 @@ public:
     node *nxt;
 };
 
-class LinkedList
+class linkedList
 {
     node *head;
-    int sz;
 
 public:
-    LinkedList()
-
+    linkedList()
     {
         head = NULL;
-        sz = 0;
     }
-
-    // Create new node with data = value and nxt = NULL
-    node *CreateNewNode(int value)
+    node *createNewNode(int value)
     {
         node *newnode = new node;
         newnode->data = value;
@@ -31,21 +25,17 @@ public:
         return newnode;
     }
 
-    // insert a vlaue at head
-    void InsertAtHead(int value)
+    void insertAtHead(int value)
     {
-        sz++;
-        node *a = CreateNewNode(value);
+        node *a = createNewNode(value);
         if (head == NULL)
         {
             head = a;
             return;
         }
-        // if head is not NULL
         a->nxt = head;
         head = a;
     }
-
     void Traverse()
     {
         node *a = head;
@@ -56,6 +46,7 @@ public:
         }
         cout << endl;
     }
+
     int SearchDistinctValue(int value)
     {
         node *a = head;
@@ -85,59 +76,25 @@ public:
             index++;
         }
     }
-    int getSize()
-    {
-        // O(n)
-        return sz;
-
-        // o(size of list) = o(n)
-        //  int sz = 0;
-        //  node *a = head;
-        //  while(a!= NULL)
-        //  {
-        //      sz++;
-        //      a = a->nxt;
-        //  }
-        //  return sz;
-    }
-    void insertAtAnyIndex(int index, int value)
-    {
-        if (index < 0 || index > sz)
-        {
-            return;
-        }
-        if (index == 0)
-        {
-            InsertAtHead(value);
-            return;
-        }
-        sz++;
-        node *a = head;
-        int cur_index = 0;
-        while (cur_index != index - 1)
-        {
-            a = a->nxt;
-            cur_index++;
-        }
-        node *newnode = CreateNewNode(value);
-        newnode->nxt = a->nxt;
-        a->nxt = newnode;
-    }
 };
 
 int main()
 {
-    LinkedList L;
+    linkedList L;
 
-    L.InsertAtHead(30);
-
-    L.InsertAtHead(50);
-
-    L.InsertAtHead(30);
+    L.insertAtHead(5);
+    L.Traverse();
+    L.insertAtHead(90);
+    L.Traverse();
+    L.insertAtHead(50);
+    L.Traverse();
+    L.insertAtHead(5);
 
     L.Traverse();
-    L.insertAtAnyIndex(1, 60);
-    L.Traverse();
+
+    L.SearchDistinctValue(67);
+
+    L.SearchAllValue(5);
 
     return 0;
 }
