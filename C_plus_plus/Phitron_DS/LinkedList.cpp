@@ -123,6 +123,7 @@ public:
         newnode->nxt = a->nxt;
         a->nxt = newnode;
     }
+    //delete at head
     void deleteAtHead()
     {
         if(head == NULL)
