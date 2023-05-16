@@ -123,6 +123,17 @@ public:
         newnode->nxt = a->nxt;
         a->nxt = newnode;
     }
+    void deleteAtHead()
+    {
+        if(head == NULL)
+        {
+            return;
+        }
+        sz--;
+        node *a = head;
+        head = a->nxt;
+        delete a;
+    }
 };
 
 int main()
@@ -138,6 +149,14 @@ int main()
     L.Traverse();
     L.insertAtAnyIndex(1, 60);
     L.Traverse();
+    L.insertAtAnyIndex(4, 700);
+    L.Traverse();
+
+    cout<<L.getSize()<<endl;
+
+    L.deleteAtHead();
+    L.Traverse();
+    cout<<L.getSize()<<endl;
 
     return 0;
 }
