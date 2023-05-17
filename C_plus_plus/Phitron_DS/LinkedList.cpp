@@ -135,6 +135,31 @@ public:
         head = a->nxt;
         delete a;
     }
+
+    //Delete the value of any Index
+    void deleteAnyIndex(int index)
+    {
+        if(index<0 || index > sz-1)
+        {
+            return;
+        }
+        if (index == 0)
+        {
+            deleteAtHead();
+            return;
+        }
+        sz--;
+        node *a = head;
+        int cur_index = 0;
+        while (cur_index != index -1)
+        {
+            a = a->nxt;
+            cur_index++;
+        }
+        node *b = a->nxt;
+        a->nxt = b->nxt;
+        delete b;
+    }
 };
 
 int main()
@@ -158,6 +183,9 @@ int main()
     L.deleteAtHead();
     L.Traverse();
     cout<<L.getSize()<<endl;
+
+    L.deleteAnyIndex(2);
+    L.Traverse();
 
     return 0;
 }
