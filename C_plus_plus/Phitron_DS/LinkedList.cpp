@@ -123,10 +123,10 @@ public:
         newnode->nxt = a->nxt;
         a->nxt = newnode;
     }
-    //delete at head
+    // delete at head
     void deleteAtHead()
     {
-        if(head == NULL)
+        if (head == NULL)
         {
             return;
         }
@@ -136,10 +136,10 @@ public:
         delete a;
     }
 
-    //Delete the value of any Index
+    // Delete the value of any Index
     void deleteAnyIndex(int index)
     {
-        if(index<0 || index > sz-1)
+        if (index < 0 || index > sz - 1)
         {
             return;
         }
@@ -151,7 +151,7 @@ public:
         sz--;
         node *a = head;
         int cur_index = 0;
-        while (cur_index != index -1)
+        while (cur_index != index - 1)
         {
             a = a->nxt;
             cur_index++;
@@ -160,17 +160,59 @@ public:
         a->nxt = b->nxt;
         delete b;
     }
+    // Insert new value after a specific value
+    void insertAfterValue(int prev_value, int new_value)
+    {
+        node *a = head;
+        while (a != NULL)
+        {
+            if (a->data == prev_value)
+            {
+                break;
+            }
+            a = a->nxt;
+        }
+        if (a == NULL)
+        {
+            cout << prev_value << " does not exist in this Linked-List." << endl;
+            return;
+        }
+        sz++;
+        node *b = CreateNewNode(new_value);
+        b->nxt = a->nxt;
+        a->nxt = b;
+    }
+    /*Reverse print using Recursion*/
+    void reversePrint(node *a)
+    {
+        if (a == NULL)
+        {
+            return;
+        }
+        reversePrint(a->nxt);
+        cout << a->data << " ";
+    }
+    void reversePrint2()
+    {
+        reversePrint(head);
+        cout << endl;
+    }
 };
 
 int main()
 {
     LinkedList L;
 
-    L.InsertAtHead(30);
+    L.InsertAtHead(90);
 
     L.InsertAtHead(50);
 
     L.InsertAtHead(30);
+
+    L.InsertAtHead(600);
+
+    L.Traverse();
+    L.reversePrint2();
 
     L.Traverse();
     L.insertAtAnyIndex(1, 60);
@@ -178,14 +220,20 @@ int main()
     L.insertAtAnyIndex(4, 700);
     L.Traverse();
 
-    cout<<L.getSize()<<endl;
+    cout << L.getSize() << endl;
 
     L.deleteAtHead();
     L.Traverse();
-    cout<<L.getSize()<<endl;
+    cout << L.getSize() << endl;
 
     L.deleteAnyIndex(2);
     L.Traverse();
+    cout << L.getSize() << endl;
 
+    L.insertAfterValue(700, 98);
+    L.Traverse();
+    cout << L.getSize() << endl;
+
+    L.reversePrint2();
     return 0;
 }
