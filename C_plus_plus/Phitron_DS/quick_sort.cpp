@@ -8,6 +8,8 @@ vector<int> quick_sort(vector<int> &a)
     if (a.size() <= 1)
         return a;
 
+
+    /*Time complexity depends on the pivot*/
     int pivot = rand()%(a.size());
 
     vector<int> b, c;
