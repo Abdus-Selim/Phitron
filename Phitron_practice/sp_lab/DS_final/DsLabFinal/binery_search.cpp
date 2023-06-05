@@ -4,9 +4,13 @@ using namespace std;
 int main()
 {
     int sz, k;
-    cin >> sz >> k;
+    cout << "Input size: ";
+    cin >> sz;
+    cout << "Which value you want to search: ";
+    cin >> k;
+    cout << "Input the array: ";
     vector<int> a(sz);
-    for (int i = 0; i < sz; i++)
+    for (int i = 1; i < sz; i++)
     {
         cin >> a[i];
     }

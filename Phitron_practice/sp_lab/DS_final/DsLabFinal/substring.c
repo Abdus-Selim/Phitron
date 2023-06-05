@@ -9,7 +9,6 @@ char *Substr(char str[], int start, int len)
 
     for (i = 0; i < len; i++)
         str_result[i] = str[start + i];
-
     str_result[len] = '\0';
 
     return str_result;
