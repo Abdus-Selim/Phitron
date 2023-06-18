@@ -1,35 +1,21 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class node
+int main()
 {
-    int date;
-    node *next;
-};
+    int n;
+    cin >> n;
 
-class likedlist
-{
-node *head;
+    for (int i = 0; i < n; i++)
+    {
+        string s, x;
+        cin >> s >> x;
+        while (s.find(x) != -1)
+        {
+            s.replace(s.find(x), x.size(), "$");
+        }
+        cout << s << endl;
+    }
 
-likedlist()
-{
-    head=NULL;
-}
-
-//create new node
-
-node *createNewNode(int val)
-{
-    node *newnode = new node;
-    newnode->data =val;
-    newnode->next=NULL;
-    return newnode;
-}
-
-
-
-};
-
-int main(
     return 0;
-)
+}
