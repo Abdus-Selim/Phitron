@@ -1,39 +1,51 @@
 #include <bits/stdc++.h>
+
+/*Stack using Dynamic Array*/
+
 using namespace std;
-const int MAX_SIZE = 500;
-
-/*A stack is an example of a data structure that 
-follows the LIFO (Last-In, First-Out) principle*/
-
-/*Stack using static array*/
 
 class Stack
 {
 public:
-
-    int a[MAX_SIZE];
+    int *a;
+    int capcty;
     int stack_size;
     Stack()
     {
+        a = new int[1];
+        capcty = 1;
         stack_size = 0;
+    }
+
+    /*Make the array capacity multiplied by 2*/
+    void increase_size()
+    {
+        int *tmp;
+        tmp = new int[capcty * 2];
+        for (int i = 0; i < capcty; i++)
+        {
+            tmp[i] = a[i];
+        }
+        swap(a, tmp);
+        delete []tmp;
+        capcty = capcty*2;
     }
     /*Add an element to the stact O(1)*/
     void push(int val)
     {
-        if(stack_size+1 > MAX_SIZE)
+        if (stack_size + 1 > capcty)
         {
-            cout<<"The stack is FULL!"<<endl;
-            return;
+            increase_size();
         }
         stack_size = stack_size + 1;
-        a[stack_size-1]= val;
+        a[stack_size - 1] = val;
     }
     /*Delete the top most element from the stack O(1)*/
     void pop()
     {
-        if(stack_size == 0)
+        if (stack_size == 0)
         {
-            cout<<"Stack Size is EMPTY!"<<endl;
+            cout << "Stack Size is EMPTY!" << endl;
             return;
         }
         a[stack_size - 1] = 0;
@@ -56,11 +68,12 @@ int main()
 {
     Stack st;
     st.push(5);
-    cout<<st.top()<<endl;
+    cout << st.top() << endl;
     st.push(3);
     cout << st.top() << endl;
     st.push(9);
-    cout << st.top() << endl<<endl;
+    cout << st.top() << endl
+         << endl;
 
     st.pop();
     cout << st.top() << endl;
