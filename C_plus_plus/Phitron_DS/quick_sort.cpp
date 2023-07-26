@@ -45,7 +45,7 @@ vector<int> quick_sort(vector<int> &a)
 
 int main()
 {
-    vector<int> a = {5, 2, 7, 9, 4, 2, 1};
+    vector<int> a = {11,7,6,4,3,1};
     vector<int> sorted_a = quick_sort(a);
     for (int i = 0; i < sorted_a.size(); i++)
         cout << sorted_a[i] << " ";

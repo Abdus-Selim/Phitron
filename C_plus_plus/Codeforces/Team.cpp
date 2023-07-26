@@ -30,6 +30,10 @@ int main()
 
     string line;
 
+/* The code snippet is reading `n` lines of input and for each line, it calculates the sum of the
+digits in the line. If the sum is greater than or equal to 2, it increments the `count` variable.
+Finally, it prints the value of `count`. */
+
     for (i = 0; i < n; i++)
     {
         cin >> line;

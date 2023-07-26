@@ -1,11 +1,17 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "list": "cpp",
+        "ostream": "cpp"
     },
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[cpp]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "java.debug.settings.onBuildFailureProceed": true,
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
     }
 }
