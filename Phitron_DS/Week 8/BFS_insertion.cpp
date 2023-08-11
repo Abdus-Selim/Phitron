@@ -5,6 +5,7 @@ class node
 {
 public:
     int id;
+    int value;
     node *Left;
     node *Right;
     node *parent;
@@ -20,18 +21,19 @@ public:
         root = NULL;
     }
 
-    node *CreateNewNode(int id)
+    node *CreateNewNode(int id, int value)
     {
         node *newnonde = new node;
         newnonde->id = id;
+        newnonde->value = value;
         newnonde->Left = NULL;
         newnonde->Right = NULL;
         newnonde->parent = NULL;
         return newnonde;
     }
-    void Insertion(int id)
+    void Insertion(int id, int value)
     {
-        node *newnode = CreateNewNode(id);
+        node *newnode = CreateNewNode(id, value);
         if (root == NULL)
         {
             root = newnode;
@@ -68,6 +70,8 @@ public:
 
     void BFS()
     {
+        if (root == NULL)
+            return;
         queue<node *> q;
         q.push(root);
         while (!q.empty())
@@ -92,19 +96,35 @@ public:
             cout << "Node id = " << a->id << " Left Child = " << l << " Right child = " << r << " Parent = " << p << endl;
         }
     }
+    void Search(node*a,int value)
+    {
+        if(a==NULL)
+        {
+            return;
+        }
+        if(a->value == value)
+        {
+            cout<<a->id<<" ";
+        }
+        Search(a->Left, value);
+        Search(a->Right, value);
+        
+    }
 };
 
 int main()
 {
     binary_tree bt;
-    bt.Insertion(0);
-    bt.Insertion(1);
-    bt.Insertion(2);
-    bt.Insertion(3);
-    bt.Insertion(4);
-    bt.Insertion(5);
+    bt.Insertion(0, 5);
+    bt.Insertion(1, 10);
+    bt.Insertion(2, 10);
+    bt.Insertion(3, 9);
+    bt.Insertion(4, 8);
+    bt.Insertion(5, 5);
 
     bt.BFS();
+    cout<<endl;
+    bt.Search(bt.root, 5);
 
     return 0;
 }
