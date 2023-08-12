@@ -85,6 +85,26 @@ public:
             prv->Left = newnode;
         }
     }
+    bool Search(int value)
+    {
+        node *Parent = root;
+        while (Parent != NULL)
+        {
+            if (value > Parent->value)
+            {
+                Parent = Parent->Right;
+            }
+            else if (value < Parent->value)
+            {
+                Parent = Parent->Left;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 };
 
 int main()
@@ -96,7 +116,21 @@ int main()
     b.Insert(5);
     b.Insert(7);
     b.Insert(8);
-    b.BFS();
+    // b.BFS();
+    int num;
+    while (cin >> num)
+    {
+        if (b.Search(num))
+        {
+            cout << num << " is existing in the BST!" << endl;
+        }
+        else
+        {
+            cout << num << " doesn't exist in the BST!" << endl;
+        }
+    }
+    // cout<<b.Search(6)<<endl;
+    // cout<<b.Search(10)<<endl;
 
     return 0;
 }
