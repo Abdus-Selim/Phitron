@@ -47,6 +47,10 @@ public:
     // O(logn)
     void Delete(int idx)
     {
+        if (idx >= nodes.size())
+        {
+            return;
+        }
         swap(nodes[idx], nodes[nodes.size() - 1]);
         nodes.pop_back();
         down_heapify(idx);
@@ -67,6 +71,30 @@ public:
         }
         cout << endl;
     }
+
+    // O(1)
+    int getMax()
+    {
+        if (nodes.empty())
+        {
+            cout << "Heap is empty!" << endl;
+            return -1;
+        }
+        return nodes[0];
+    }
+
+    // O(logn)
+    int ExtractMax()
+    {
+        if (nodes.empty())
+        {
+            cout << "Heap is empty!" << endl;
+            return -1;
+        }
+        int ret = nodes[0];
+        Delete(0);
+        return ret;
+    }
 };
 
 int main()
@@ -79,9 +107,13 @@ int main()
     heap.Insert(10);
     heap.Insert(20);
     heap.Insert(30);
-    heap.PrintHeap();
 
-    heap.Delete(0);
+    cout << "Max element = " << heap.getMax() << endl;
+    // heap.PrintHeap();
+    cout << "Max element = " << heap.ExtractMax() << endl;
+    cout << "Max element = " << heap.ExtractMax() << endl;
+
+    // heap.Delete(0);
 
     heap.PrintHeap();
 
