@@ -95,25 +95,59 @@ public:
         Delete(0);
         return ret;
     }
+
+    // O(n)
+    void Build_from_array(vector<int> &a)
+    {
+        nodes = a;
+        int n = nodes.size();
+        int last_non_leaf = n / 2 - 1;
+        for (int i = last_non_leaf; i >= 0; i--)
+        {
+            down_heapify(i);
+        }
+    }
+
+    // O(nlogn)
+    vector<int> heap_sort(vector<int> &a)
+    {
+        MaxHeap h;
+        h.Build_from_array(a);
+        vector<int> ans;
+        for (int i = 0; i < a.size(); i++)
+        {
+            ans.push_back(h.ExtractMax());
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
 };
 
 int main()
 {
     MaxHeap heap;
-    heap.Insert(4);
-    heap.Insert(7);
-    heap.Insert(9);
-    heap.Insert(1);
-    heap.Insert(10);
-    heap.Insert(20);
-    heap.Insert(30);
+    // heap.Insert(4);
+    // heap.Insert(7);
+    // heap.Insert(9);
+    // heap.Insert(1);
+    // heap.Insert(10);
+    // heap.Insert(20);
+    // heap.Insert(30);
 
-    cout << "Max element = " << heap.getMax() << endl;
-    // heap.PrintHeap();
-    cout << "Max element = " << heap.ExtractMax() << endl;
-    cout << "Max element = " << heap.ExtractMax() << endl;
+    // cout << "Max element = " << heap.getMax() << endl;
+    // // heap.PrintHeap();
+    // cout << "Max element = " << heap.ExtractMax() << endl;
+    // cout << "Max element = " << heap.ExtractMax() << endl;
 
-    // heap.Delete(0);
+    // // heap.Delete(0);
+
+    vector<int> a = {1, 2, 3, 4, 10, 9, 5, 7};
+    vector<int> sorted_a = heap.heap_sort(a);
+    for (int i = 0; i < sorted_a.size(); i++)
+    {
+        cout << sorted_a[i] << " ";
+    }
+    cout << endl;
 
     heap.PrintHeap();
 
