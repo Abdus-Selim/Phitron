@@ -31,6 +31,7 @@ bool detect_cycle(int node)
             return true;
         }
     }
+    visited[node] == 2;
     return false;
 }
 
