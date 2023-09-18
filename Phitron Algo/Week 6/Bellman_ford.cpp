@@ -28,7 +28,10 @@ int main()
     }
     int src = 1;
     d[src] = 0;
-    for (int i = 1; i < n - 1; i++)
+
+    bool negative_cycle = false;
+
+    for (int i = 1; i < n; i++)
     {
         for (int node = 1; node <= n; node++)
         {
@@ -41,9 +44,23 @@ int main()
                 if (d[u] + w < d[v])
                 {
                     d[v] = d[u] + w;
+                    if (i = n)
+                    {
+                        negative_cycle = true;
+                    }
                 }
             }
         }
+    }
+    if (negative_cycle == true)
+    {
+        cout << "Graph has negative Cycle!"
+             << "\n";
+    }
+    else
+    {
+        cout << "No negative cycle in the graph!"
+             << "\n";
     }
     for (int i = 1; i <= n; i++)
     {
